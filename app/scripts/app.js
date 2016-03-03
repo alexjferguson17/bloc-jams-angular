@@ -29,3 +29,17 @@
          .module('blocJams', ['ui.router'])
          .config(config);
  })();
+
+
+angular.module('blocJams').filter('secondsToTimeString', function() {
+  return function(seconds) {
+    if(seconds == undefined){return "0:00"}
+
+    minutes = Math.floor(seconds/60);
+
+    seconds = seconds % 60;
+
+    result = minutes + ":" + ("0" + seconds).slice(-2);
+    return result;
+}
+});
